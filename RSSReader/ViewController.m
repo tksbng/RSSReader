@@ -24,6 +24,8 @@
     //Safariに渡すURL
     NSURL *urlForSafari;
 }
+
+
 //HTTP通信を利用してXMLを取得
 -(void)getXML {
     NSString *urlString = @"http://rss.dailynews.yahoo.co.jp/fc/rss.xml";
@@ -89,15 +91,89 @@
     }
     //バックグラウンドでの処理完了に伴い、フロント側でリストを更新
     [self refreshTableOnFront];
-    
+}
+
 //Table viewのセクション数を指定
 -(NSInteger)numberOfSectionsTableView:(UITableView *)tableView {
         return  1;
 }
+//Table Viewのセルの数を指定
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [elementList count];
+}
+
+//各セルにタイトルをセット
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //セルのスタイルを標準のものに指定
+    static NSString *CellIdentifier = @"NewsCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //カスタムセル上のラベル
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:2];
+    
+    //セルにお気に入りサイトのタイトルを表示
+    News *f = [elementList objectAtIndex:[indexPath row]];
+    titleLabel.text = f.title;
+    dateLabel.text = f.date;
+    
+    return cell;
+}
+
+//フロント側でテーブルを更新
+-(void) refreshTableOnFront{
+    [self performSelectorOnMainThread:@selector(refreshTable) withObject:self waitUntilDone:TRUE];
+    
+}
+
+//テーブルの内容をセット
+-(void)refreshTable {
+    //ステータスバーのActivity Indicatorを停止
+    [UIApplication sharedApplication].networkActivityIndicatorVisible   = NO;
+    //最新の内容にテーブルをセット
+    [table reloadData];
+}
+
+//リスト中のお気に入りアイテムが選択された時の処理
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    News *n = [elementList objectAtIndex:[indexPath row]];
+    NSString *selectedURL = n.url;
+    urlForSafari = [NSURL URLWithString:selectedURL];
+    //サファリを起動するかどうかを確認
+    [self goToSafari];
+    
+}
+//サファリを起動するかどうかを確認するalert view表示
+-(void)goToSafari {
+    //メッセージを表示
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Safariの起動" message:@"このニュースをSafariで開きますか？" delegate:self cancelButtonTitle:@"いいえ" otherButtonTitles:@"はい", nil];
+    [alert show];
+}
+//alert view上のボタンがクリックされた時の処理
+//「はい」が押されたときはSafariを起動
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"いいえ"]) {
+        NSLog(@"Safari起動キャンセル");
+    }else if ([title isEqualToString:@"はい"]) {
+        NSLog(@"Safari起動");
+        //アプリからSafariを起動
+        [[UIApplication sharedApplication] openURL:urlForSafari];
+    }
+}
+
+// フィールドを更新
+-(IBAction)refreshList:(id)sender{
+    //最新のRSSフィードを取得
+    [self getXML];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    //XMLを取得・解析
+    [self getXML];
 }
 
 - (void)didReceiveMemoryWarning
