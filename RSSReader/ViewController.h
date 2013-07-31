@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TBXML.h"
+#import "TBXML+HTTP.h"
+#import "News.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @end

@@ -23,6 +23,10 @@
 		FF26DECB17A8969300F9E21B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF26DEA617A8969200F9E21B /* Foundation.framework */; };
 		FF26DED317A8969300F9E21B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF26DED117A8969300F9E21B /* InfoPlist.strings */; };
 		FF26DED617A8969300F9E21B /* RSSReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF26DED517A8969300F9E21B /* RSSReaderTests.m */; };
+		FF26DEE417A896FE00F9E21B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF26DEDF17A896FE00F9E21B /* icon.png */; };
+		FF26DEE517A896FE00F9E21B /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = FF26DEE117A896FE00F9E21B /* TBXML.m */; };
+		FF26DEE617A896FE00F9E21B /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = FF26DEE317A896FE00F9E21B /* TBXML+HTTP.m */; };
+		FF26DEE917A899C100F9E21B /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = FF26DEE817A899C100F9E21B /* News.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,13 @@
 		FF26DED217A8969300F9E21B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FF26DED417A8969300F9E21B /* RSSReaderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSReaderTests.h; sourceTree = "<group>"; };
 		FF26DED517A8969300F9E21B /* RSSReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSReaderTests.m; sourceTree = "<group>"; };
+		FF26DEDF17A896FE00F9E21B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		FF26DEE017A896FE00F9E21B /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		FF26DEE117A896FE00F9E21B /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		FF26DEE217A896FE00F9E21B /* TBXML+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+HTTP.h"; sourceTree = "<group>"; };
+		FF26DEE317A896FE00F9E21B /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+HTTP.m"; sourceTree = "<group>"; };
+		FF26DEE717A899C100F9E21B /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
+		FF26DEE817A899C100F9E21B /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +98,11 @@
 		FF26DE9817A8969200F9E21B = {
 			isa = PBXGroup;
 			children = (
+				FF26DEDF17A896FE00F9E21B /* icon.png */,
+				FF26DEE017A896FE00F9E21B /* TBXML.h */,
+				FF26DEE117A896FE00F9E21B /* TBXML.m */,
+				FF26DEE217A896FE00F9E21B /* TBXML+HTTP.h */,
+				FF26DEE317A896FE00F9E21B /* TBXML+HTTP.m */,
 				FF26DEAA17A8969200F9E21B /* RSSReader */,
 				FF26DECE17A8969300F9E21B /* RSSReaderTests */,
 				FF26DEA317A8969200F9E21B /* Frameworks */,
@@ -123,6 +139,8 @@
 				FF26DEBF17A8969200F9E21B /* ViewController.h */,
 				FF26DEC017A8969200F9E21B /* ViewController.m */,
 				FF26DEAB17A8969200F9E21B /* Supporting Files */,
+				FF26DEE717A899C100F9E21B /* News.h */,
+				FF26DEE817A899C100F9E21B /* News.m */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -236,6 +254,7 @@
 				FF26DEB917A8969200F9E21B /* Default@2x.png in Resources */,
 				FF26DEBB17A8969200F9E21B /* Default-568h@2x.png in Resources */,
 				FF26DEBE17A8969200F9E21B /* MainStoryboard.storyboard in Resources */,
+				FF26DEE417A896FE00F9E21B /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +292,9 @@
 				FF26DEB117A8969200F9E21B /* main.m in Sources */,
 				FF26DEB517A8969200F9E21B /* AppDelegate.m in Sources */,
 				FF26DEC117A8969200F9E21B /* ViewController.m in Sources */,
+				FF26DEE517A896FE00F9E21B /* TBXML.m in Sources */,
+				FF26DEE617A896FE00F9E21B /* TBXML+HTTP.m in Sources */,
+				FF26DEE917A899C100F9E21B /* News.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
