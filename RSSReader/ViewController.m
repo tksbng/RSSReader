@@ -114,8 +114,13 @@
     //セルにお気に入りサイトのタイトルを表示
     News *f = [elementList objectAtIndex:[indexPath row]];
     titleLabel.text = f.title;
+    /*
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    [fmt setDateFormat:@"yyyy年MM月dd日 HH時mm分"];
+    NSDate *dateWithFmt = [fmt dateFromString:f.date];
+    dateLabel.text = [fmt stringFromDate:dateWithFmt];
+    */
     dateLabel.text = f.date;
-    
     return cell;
 }
 
